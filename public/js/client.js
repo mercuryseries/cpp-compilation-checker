@@ -33765,7 +33765,12 @@ var SourceCodeForm = React.createClass({
     },
     launchBuildProcess: function launchBuildProcess(e) {
         e.preventDefault();
-        $.post('/compile', function (result) {
+
+        var submitButton = $(ReactDOM.findDOMNode(this.refs.submitButton));
+
+        submitButton.prop('disabled', true);
+
+        $.post('/compile', { code: this.state.code, input: '' }, function (result) {
             if (result == '') {
                 flashy('Build process ended without any issues...', '#');
             } else {
@@ -33773,6 +33778,7 @@ var SourceCodeForm = React.createClass({
                 buildErrorsModal.find('#build-errors').html(result.replace(/\n/g, "<br>"));
                 buildErrorsModal.modal('show');
             }
+            submitButton.prop('disabled', false);
         });
     },
     onChange: function onChange(e) {
@@ -33793,7 +33799,7 @@ var SourceCodeForm = React.createClass({
                 ),
                 React.createElement('textarea', { value: this.state.code, onKeyUp: this.onChange, onChange: this.onChange, rows: '20', id: 'code', ref: 'code', className: 'form-control' })
             ),
-            React.createElement('input', { type: 'submit', value: 'Launch the Build Process', className: 'btn btn-primary btn-lg btn-block' })
+            React.createElement('input', { type: 'submit', ref: 'submitButton', value: 'Launch the Build Process', className: 'btn btn-primary btn-lg btn-block' })
         );
     }
 });
