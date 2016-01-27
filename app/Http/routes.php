@@ -23,4 +23,8 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'PagesController@about'
     ]);
 
+    Route::post('/compile', function () {
+        return shell_exec('g++ /home/freedev/Desktop/cpp_projects/hello.cpp 2>&1');
+    });
+
 });

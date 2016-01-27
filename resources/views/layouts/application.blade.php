@@ -33,5 +33,6 @@
     <script src="{{ elixir('js/app.js') }}"></script>
     <script src="{{ elixir('js/client.js') }}"></script>
     @include('flashy::message')
+    @include('shared/_build_errors_modal')
 </body>
 </html>

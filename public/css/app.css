@@ -5899,8 +5899,17 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     width: 300px;
     margin-left: -150px; } }
 
-.md-space-top {
+.lightgray-bg {
+  background-color: #555; }
+
+.md-padding {
+  padding: 1.8em; }
+
+.md-margin-top {
   margin-top: 1.8em; }
+
+.sm-height {
+  max-height: 400px; }
 
 body {
   font-family: "Source Sans Pro", Helvetica, sans-serif; }

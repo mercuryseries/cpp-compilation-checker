@@ -33659,6 +33659,11 @@ var App = React.createClass({
             code: ''
         };
     },
+    componentDidMount: function componentDidMount() {
+        $('#code').on('scroll', function () {
+            $('#source-code-displayer').scrollTop($(this).scrollTop());
+        });
+    },
     updateCode: function updateCode(code) {
         this.setState({ code: code });
     },
@@ -33668,7 +33673,7 @@ var App = React.createClass({
             null,
             React.createElement(
                 'h1',
-                { className: 'lead text-center' },
+                { className: 'lead text-center alert alert-info' },
                 'IFT-3001 · C++ Code Build Checker · Université LAVAL'
             ),
             React.createElement(
@@ -33681,7 +33686,7 @@ var App = React.createClass({
                 ),
                 React.createElement(
                     'div',
-                    { className: 'col-md-6 md-space-top' },
+                    { className: 'col-md-6 md-margin-top' },
                     React.createElement(_SourceCodeDisplayer2.default, { code: this.state.code })
                 )
             )
@@ -33705,7 +33710,7 @@ var SourceCodeDisplayer = React.createClass({
     displayName: 'SourceCodeDisplayer',
     getInitialState: function getInitialState() {
         return {
-            code: '#include <iostream>\nusing namespace std;\nint main ()\n{\n    cout << "Hello World from IFT-3001!";\n    cout << "I\'m a C++ program built at ULAVAL.";\n    \n    return 0;\n}'
+            code: '#include <iostream>\nusing namespace std;\nint main ()\n{\n    cout << "Hello World from IFT-3001!" << endl;\n    cout << "I\'m a C++ program built at ULAVAL." << endl;\n    \n    return 0;\n}'
         };
     },
     highlightCode: function highlightCode() {
@@ -33724,7 +33729,7 @@ var SourceCodeDisplayer = React.createClass({
             null,
             React.createElement(
                 'code',
-                { className: 'hljs cpp' },
+                { className: 'hljs cpp sm-height', id: 'source-code-displayer' },
                 this.props.code != "" ? this.props.code : this.state.code
             )
         );
@@ -33740,6 +33745,13 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 var React = require('react');
+var ReactDOM = require('react-dom');
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
 
 var SourceCodeForm = React.createClass({
     displayName: 'SourceCodeForm',
@@ -33748,9 +33760,20 @@ var SourceCodeForm = React.createClass({
             code: ''
         };
     },
+    componentDidMount: function componentDidMount() {
+        ReactDOM.findDOMNode(this.refs.code).focus();
+    },
     launchBuildProcess: function launchBuildProcess(e) {
         e.preventDefault();
-        flashy('Build process ended without any issues...', '#');
+        $.post('/compile', function (result) {
+            if (result == '') {
+                flashy('Build process ended without any issues...', '#');
+            } else {
+                var buildErrorsModal = $('#buildErrorsModal');
+                buildErrorsModal.find('#build-errors').html(result.replace(/\n/g, "<br>"));
+                buildErrorsModal.modal('show');
+            }
+        });
     },
     onChange: function onChange(e) {
         this.setState({ code: e.target.value });
@@ -33768,7 +33791,7 @@ var SourceCodeForm = React.createClass({
                     { className: 'control-label', htmlFor: 'code' },
                     'Please enter your beautiful C++ Code down below:'
                 ),
-                React.createElement('textarea', { value: this.state.code, onKeyUp: this.onChange, onChange: this.onChange, rows: '20', className: 'form-control' })
+                React.createElement('textarea', { value: this.state.code, onKeyUp: this.onChange, onChange: this.onChange, rows: '20', id: 'code', ref: 'code', className: 'form-control' })
             ),
             React.createElement('input', { type: 'submit', value: 'Launch the Build Process', className: 'btn btn-primary btn-lg btn-block' })
         );
@@ -33777,6 +33800,6 @@ var SourceCodeForm = React.createClass({
 
 exports.default = SourceCodeForm;
 
-},{"react":306}]},{},[307]);
+},{"react":306,"react-dom":177}]},{},[307]);
 
 //# sourceMappingURL=client.js.map

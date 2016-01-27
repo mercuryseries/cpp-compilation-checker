@@ -9,8 +9,8 @@ var SourceCodeDisplayer = React.createClass({
 using namespace std;
 int main ()
 {
-    cout << "Hello World from IFT-3001!";
-    cout << "I'm a C++ program built at ULAVAL.";
+    cout << "Hello World from IFT-3001!" << endl;
+    cout << "I'm a C++ program built at ULAVAL." << endl;
     
     return 0;
 }`
@@ -33,7 +33,7 @@ int main ()
     render() {
         return (
             <pre>
-                <code className="hljs cpp">
+                <code className="hljs cpp sm-height" id="source-code-displayer">
                     {this.props.code != "" ? this.props.code : this.state.code}
                 </code>
             </pre>

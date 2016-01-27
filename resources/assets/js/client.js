@@ -12,6 +12,13 @@ var App = React.createClass({
         };
     },
 
+    componentDidMount() {
+        $('#code').on('scroll', function () {
+            $('#source-code-displayer').scrollTop($(this).scrollTop());
+        });
+    },
+
+
     updateCode(code) {
         this.setState({code});
     },
@@ -19,7 +26,7 @@ var App = React.createClass({
     render() {
         return (
             <div>
-                <h1 className="lead text-center">
+                <h1 className="lead text-center alert alert-info">
                     IFT-3001 &middot; C++ Code Build Checker &middot; Université LAVAL
                 </h1>
                 
@@ -28,7 +35,7 @@ var App = React.createClass({
                         <SourceCodeForm onUpdate={this.updateCode} />
                     </div>
 
-                    <div className="col-md-6 md-space-top">
+                    <div className="col-md-6 md-margin-top">
                         <SourceCodeDisplayer code={this.state.code} />
                     </div>
                 </div>

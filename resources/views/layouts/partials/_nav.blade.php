@@ -12,7 +12,7 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="{{ route('about_path') }}">About</a></li>
+        <li><a href="{{ route('about_path') }}">About this application</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
