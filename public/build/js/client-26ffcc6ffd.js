@@ -33710,7 +33710,7 @@ var SourceCodeDisplayer = React.createClass({
     displayName: 'SourceCodeDisplayer',
     getInitialState: function getInitialState() {
         return {
-            code: '#include <iostream>\nusing namespace std;\nint main ()\n{\n    cout << "Hello World from IFT-3001!" << endl;\n    cout << "I\'m a C++ program built at ULAVAL." << endl;\n    \n    return 0;\n}'
+            code: '#include <iostream>\nusing namespace std;\n\nint main ()\n{\n    cout << "Hello World from IFT-3001!" << endl;\n    cout << "I\'m a C++ program built at ULAVAL." << endl;\n    \n    return 0;\n}'
         };
     },
     highlightCode: function highlightCode() {
@@ -33763,7 +33763,7 @@ var SourceCodeForm = React.createClass({
     componentDidMount: function componentDidMount() {
         var textarea = ReactDOM.findDOMNode(this.refs.code);
         textarea.focus();
-        $(textarea).tabby();
+        $(textarea).tabby({ tabString: '    ' });
     },
     launchBuildProcess: function launchBuildProcess(e) {
         e.preventDefault();

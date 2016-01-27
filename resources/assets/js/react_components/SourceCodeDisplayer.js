@@ -7,6 +7,7 @@ var SourceCodeDisplayer = React.createClass({
         return {
             code: `#include <iostream>
 using namespace std;
+
 int main ()
 {
     cout << "Hello World from IFT-3001!" << endl;
