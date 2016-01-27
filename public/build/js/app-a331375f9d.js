@@ -14907,5 +14907,4 @@ function flashy(message, link) {
         $(this).remove();
     });
 }
-//
 //# sourceMappingURL=app.js.map

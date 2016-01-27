@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Storage;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -25,18 +24,13 @@ class CompilationController extends Controller
         
         $command = $this->buildCommand($filename, $stderr);
 
-        $this->execute($command);
+        $this->executeCommand($command);
 
         $errors = $this->retrieveErrors($stderr);
         
         $this->cleanUp([$filename, '*.o', '*.tmp', 'a.out']);
 
         return $errors;
-    }
-
-    private function buildCommand($filename, $stderr)
-    {
-        return "g++ -lm " . $filename . " 2>" . $stderr;
     }
 
     private function createProgram($filename, $content)
@@ -46,7 +40,12 @@ class CompilationController extends Controller
         fclose($handle);
     }
 
-    private function execute($command)
+    private function buildCommand($filename, $stderr)
+    {
+        return "g++ -lm " . $filename . " 2>" . $stderr;
+    }
+
+    private function executeCommand($command)
     {
         shell_exec($command);
     }

@@ -31,8 +31,7 @@ elixir(function(mix) {
         'vendor/SyntaxHighlighter/shCore.js',
         'vendor/SyntaxHighlighter/shBrushCpp.js',
         'vendor/jquery-tabby/jquery.textarea.js',
-        'components/flashy.js',
-        'application.js'
+        'components/flashy.js'
     ], 'public/js/app.js');
 
     mix.styles([
