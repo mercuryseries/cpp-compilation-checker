@@ -9,8 +9,8 @@ var SourceCodeDisplayer = React.createClass({
 using namespace std;
 int main ()
 {
-    cout << "Hello World!";
-    cout << "I'm a C++ program";
+    cout << "Hello World from IFT-3001!";
+    cout << "I'm a C++ program built at ULAVAL.";
     
     return 0;
 }`

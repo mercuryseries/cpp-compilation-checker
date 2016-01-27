@@ -33669,7 +33669,7 @@ var App = React.createClass({
             React.createElement(
                 'h1',
                 { className: 'lead text-center' },
-                'IFT-3001 · Vérificateur de Complication C++ · Université LAVAL'
+                'IFT-3001 · C++ Code Compilation Checker · Université LAVAL'
             ),
             React.createElement(
                 'div',
@@ -33705,7 +33705,7 @@ var SourceCodeDisplayer = React.createClass({
     displayName: 'SourceCodeDisplayer',
     getInitialState: function getInitialState() {
         return {
-            code: '#include <iostream>\nusing namespace std;\nint main ()\n{\n    cout << "Hello World!";\n    cout << "I\'m a C++ program";\n    \n    return 0;\n}'
+            code: '#include <iostream>\nusing namespace std;\nint main ()\n{\n    cout << "Hello World from IFT-3001!";\n    cout << "I\'m a C++ program built at ULAVAL.";\n    \n    return 0;\n}'
         };
     },
     highlightCode: function highlightCode() {
@@ -33762,11 +33762,11 @@ var SourceCodeForm = React.createClass({
                 React.createElement(
                     'label',
                     { className: 'control-label', htmlFor: 'code' },
-                    'Veuillez entrer votre code C++ :'
+                    'Please enter your beautiful C++ Code:'
                 ),
                 React.createElement('textarea', { value: this.state.code, onKeyUp: this.onChange, onChange: this.onChange, rows: '20', className: 'form-control' })
             ),
-            React.createElement('input', { type: 'submit', value: 'Lancer la compilation', className: 'btn btn-primary btn-lg btn-block' })
+            React.createElement('input', { type: 'submit', value: 'Build', className: 'btn btn-primary btn-lg btn-block' })
         );
     }
 });

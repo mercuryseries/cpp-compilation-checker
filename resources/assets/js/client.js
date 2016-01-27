@@ -20,7 +20,7 @@ var App = React.createClass({
         return (
             <div>
                 <h1 className="lead text-center">
-                    IFT-3001 &middot; Vérificateur de Complication C++ &middot; Université LAVAL
+                    IFT-3001 &middot; C++ Code Compilation Checker &middot; Université LAVAL
                 </h1>
                 
                 <div className="row">

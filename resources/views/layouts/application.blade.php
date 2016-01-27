@@ -10,6 +10,7 @@
     <meta name="keywords" content="c++, vérificateur, compilation, ift-3001, université, laval, conception, analayse, algorithme, québec, canada">
 
     <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet'>
     
     <link rel="stylesheet" type="text/css" href="{{ elixir('css/app.css') }}" />
