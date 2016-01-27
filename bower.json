@@ -1,0 +1,37 @@
+{
+  "name": "ift-3001-compilation-checker",
+  "description": "C++ Compilation Checker",
+  "main": "",
+  "authors": [
+    "Honore Hounwanou <mercuryseries@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "c++",
+    "vérificateur",
+    "compilation",
+    "ift-3001",
+    "université",
+    "laval",
+    "conception",
+    "analayse",
+    "algorithme",
+    "québec",
+    "canada"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.0"
+  },
+  "install": {
+    "path": "resources/assets/js/vendor"
+  }
+}

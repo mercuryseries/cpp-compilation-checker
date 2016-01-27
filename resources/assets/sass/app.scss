@@ -1,0 +1,9 @@
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/highlight.js/styles/github";
+
+@import "components/flashy";
+@import "partials/generals";
+
+body{
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+}
