@@ -25,7 +25,9 @@ var SourceCodeForm = React.createClass({
 
         submitButton.prop('disabled', true);
 
-        $.post('/compile', {code: this.state.code, input: ''}, function(result){
+        var code = this.state.code;
+
+        $.post('/compile/cpp', {code}, function(result){
             if(result == ''){
                 flashy('Build process ended without any issues...', '#');
             } else {
