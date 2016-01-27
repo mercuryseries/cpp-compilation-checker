@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Storage;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -14,13 +15,13 @@ class CompilationController extends Controller
         $code = $request->code;
 
         if (empty($code)) {
-            return "Sorry. The code area is empty.";
+            return "Your need to provide a C++ program.";
         }
 
         $filename = 'main.cpp';
         $stderr   = 'error.tmp';
 
-        $this->setupWorkspace($filename, $code);
+        $this->createProgram($filename, $code);
         
         $command = $this->buildCommand($filename, $stderr);
 
@@ -38,10 +39,10 @@ class CompilationController extends Controller
         return "g++ -lm " . $filename . " 2>" . $stderr;
     }
 
-    private function setupWorkspace($filename, $code)
+    private function createProgram($filename, $content)
     {
         $handle = fopen($filename, "w+");
-        fwrite($handle, $code);
+        fwrite($handle, $content);
         fclose($handle);
     }
 
@@ -58,7 +59,7 @@ class CompilationController extends Controller
     private function cleanUp($files = [])
     {
         foreach ($files as $file) {
-            exec('rm ' . $file);
+            exec("rm " . $file);
         }
     }
 }
