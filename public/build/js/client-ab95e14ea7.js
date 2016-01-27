@@ -33669,7 +33669,7 @@ var App = React.createClass({
             React.createElement(
                 'h1',
                 { className: 'lead text-center' },
-                'IFT-3001 · C++ Code Compilation Checker · Université LAVAL'
+                'IFT-3001 · C++ Code Build Checker · Université LAVAL'
             ),
             React.createElement(
                 'div',
@@ -33748,6 +33748,10 @@ var SourceCodeForm = React.createClass({
             code: ''
         };
     },
+    launchBuildProcess: function launchBuildProcess(e) {
+        e.preventDefault();
+        flashy('Build process ended without any issues...', '#');
+    },
     onChange: function onChange(e) {
         this.setState({ code: e.target.value });
         this.props.onUpdate(this.state.code);
@@ -33755,18 +33759,18 @@ var SourceCodeForm = React.createClass({
     render: function render() {
         return React.createElement(
             'form',
-            null,
+            { onSubmit: this.launchBuildProcess },
             React.createElement(
                 'div',
                 { className: 'form-group' },
                 React.createElement(
                     'label',
                     { className: 'control-label', htmlFor: 'code' },
-                    'Please enter your beautiful C++ Code:'
+                    'Please enter your beautiful C++ Code down below:'
                 ),
                 React.createElement('textarea', { value: this.state.code, onKeyUp: this.onChange, onChange: this.onChange, rows: '20', className: 'form-control' })
             ),
-            React.createElement('input', { type: 'submit', value: 'Build', className: 'btn btn-primary btn-lg btn-block' })
+            React.createElement('input', { type: 'submit', value: 'Launch the Build Process', className: 'btn btn-primary btn-lg btn-block' })
         );
     }
 });

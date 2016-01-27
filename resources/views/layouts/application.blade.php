@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{{ page_title($title ?? '') }}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="IFT-3001 - Vérificateur de Complication C++ - Université LAVAL">
-    <meta name="keywords" content="c++, vérificateur, compilation, ift-3001, université, laval, conception, analayse, algorithme, québec, canada">
+    <meta name="description" content="IFT-3001 - C++ Code Build Checker - Université LAVAL">
+    <meta name="keywords" content="c++, vérificateur, compilation, build, checker, ift-3001, université, laval, conception, analayse, algorithme, québec, canada">
 
     <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">

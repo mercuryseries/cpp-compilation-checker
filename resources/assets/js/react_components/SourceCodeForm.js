@@ -7,6 +7,11 @@ var SourceCodeForm = React.createClass({
         };
     },
 
+    launchBuildProcess(e) {
+        e.preventDefault();
+        flashy('Build process ended without any issues...', '#');
+    },
+
     onChange(e) {
         this.setState({ code: e.target.value });
         this.props.onUpdate(this.state.code);
@@ -14,13 +19,13 @@ var SourceCodeForm = React.createClass({
 
     render() {
         return (
-            <form>
+            <form onSubmit={this.launchBuildProcess}>
                 <div className="form-group">
-                    <label className="control-label" htmlFor="code">Please enter your beautiful C++ Code:</label>
+                    <label className="control-label" htmlFor="code">Please enter your beautiful C++ Code down below:</label>
                     <textarea value={this.state.code} onKeyUp={this.onChange} onChange={this.onChange} rows="20" className="form-control"></textarea>
                 </div>
 
-                <input type="submit" value="Build" className="btn btn-primary btn-lg btn-block" />
+                <input type="submit" value="Launch the Build Process" className="btn btn-primary btn-lg btn-block" />
             </form>
         );
     }
