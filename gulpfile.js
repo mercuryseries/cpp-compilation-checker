@@ -15,6 +15,7 @@ elixir(function(mix) {
     mix.sass('app.scss', 'resources/assets/css');
 
     mix.copy('node_modules/bootstrap-sass/assets/javascripts/bootstrap.js', 'resources/assets/js/vendor/bootstrap/bootstrap.js')
+       .copy('node_modules/jquery-tabby/jquery.textarea.js', 'resources/assets/js/vendor/jquery-tabby/jquery.textarea.js')
        .copy('bower_components/SyntaxHighlighter/scripts/XRegExp.js', 'resources/assets/js/vendor/SyntaxHighlighter/XRegExp.js')
        .copy('bower_components/SyntaxHighlighter/scripts/shCore.js', 'resources/assets/js/vendor/SyntaxHighlighter/shCore.js')
        .copy('bower_components/SyntaxHighlighter/scripts/shBrushCpp.js', 'resources/assets/js/vendor/SyntaxHighlighter/shBrushCpp.js')
@@ -29,6 +30,7 @@ elixir(function(mix) {
         'vendor/SyntaxHighlighter/XRegExp.js',
         'vendor/SyntaxHighlighter/shCore.js',
         'vendor/SyntaxHighlighter/shBrushCpp.js',
+        'vendor/jquery-tabby/jquery.textarea.js',
         'components/flashy.js',
         'application.js'
     ], 'public/js/app.js');

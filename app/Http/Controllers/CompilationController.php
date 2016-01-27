@@ -16,24 +16,49 @@ class CompilationController extends Controller
         if (empty($code)) {
             return "Sorry. The code area is empty.";
         }
-        
-        $compiler = "g++";
-        $filename_code = "main.cpp";
-        $filename_error = "error.tmp";
-        $command = $compiler . " -lm " . $filename_code . " 2>" . $filename_error;
-        
-        $file_code = fopen($filename_code, "w+");
-        fwrite($file_code, $code);
-        fclose($file_code);
 
+        $filename = 'main.cpp';
+        $stderr   = 'error.tmp';
+
+        $this->setupWorkspace($filename, $code);
+        
+        $command = $this->buildCommand($filename, $stderr);
+
+        $this->execute($command);
+
+        $errors = $this->retrieveErrors($stderr);
+        
+        $this->cleanUp([$filename, '*.o', '*.tmp', 'a.out']);
+
+        return $errors;
+    }
+
+    private function buildCommand($filename, $stderr)
+    {
+        return "g++ -lm " . $filename . " 2>" . $stderr;
+    }
+
+    private function setupWorkspace($filename, $code)
+    {
+        $handle = fopen($filename, "w+");
+        fwrite($handle, $code);
+        fclose($handle);
+    }
+
+    private function execute($command)
+    {
         shell_exec($command);
-        $error = file_get_contents($filename_error);
-        
-        exec("rm $filename_code");
-        exec("rm *.o");
-        exec("rm *.tmp");
-        exec("rm a.out");
+    }
 
-        return $error;
+    private function retrieveErrors($stderr)
+    {
+        return file_get_contents($stderr);
+    }
+
+    private function cleanUp($files = [])
+    {
+        foreach ($files as $file) {
+            exec('rm ' . $file);
+        }
     }
 }

@@ -8,6 +8,7 @@
   "dependencies": {
     "bootstrap-sass": "^3.0.0",
     "highlight.js": "^9.1.0",
+    "jquery-tabby": "^0.13.1",
     "laravel-elixir": "^4.0.0"
   }
 }

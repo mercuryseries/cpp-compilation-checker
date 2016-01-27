@@ -33761,7 +33761,9 @@ var SourceCodeForm = React.createClass({
         };
     },
     componentDidMount: function componentDidMount() {
-        ReactDOM.findDOMNode(this.refs.code).focus();
+        var textarea = ReactDOM.findDOMNode(this.refs.code);
+        textarea.focus();
+        $(textarea).tabby();
     },
     launchBuildProcess: function launchBuildProcess(e) {
         e.preventDefault();

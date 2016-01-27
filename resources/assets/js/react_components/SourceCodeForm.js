@@ -15,7 +15,9 @@ var SourceCodeForm = React.createClass({
     },
 
     componentDidMount() {
-        ReactDOM.findDOMNode(this.refs.code).focus();
+        var textarea = ReactDOM.findDOMNode(this.refs.code)
+        textarea.focus();
+        $(textarea).tabby();
     },
 
     launchBuildProcess(e) {

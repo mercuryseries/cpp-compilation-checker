@@ -3,7 +3,7 @@ function flashy(message, link) {
     $(".flashy").remove();
     template.find(".flashy__body").html(message).attr("href", link || "#").end()
      .appendTo("body").hide().fadeIn(300).delay(2800).animate({
-        marginRight: "-100%"
+        marginTop: "-100%"
     }, 300, "swing", function() {
         $(this).remove();
     });
