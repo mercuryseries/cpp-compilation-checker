@@ -29,8 +29,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.2.0",
-    "SyntaxHighlighter": "^3.0.83"
+    "jquery": "~2.2.0"
   },
   "install": {
     "path": "resources/assets/js/vendor"

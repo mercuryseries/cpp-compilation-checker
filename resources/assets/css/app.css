@@ -5914,4 +5914,17 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 body {
   font-family: "Source Sans Pro", Helvetica, sans-serif; }
 
+code.line-numbers {
+  counter-reset: line; }
+
+code span.line-number {
+  counter-increment: line; }
+
+code span.line-number:before {
+  content: counter(line);
+  color: gray;
+  padding-right: 9px;
+  padding-left: 9px;
+  margin-right: 9px; }
+
 /*# sourceMappingURL=app.css.map */

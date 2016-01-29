@@ -7,7 +7,7 @@ $.ajaxSetup({
     }
 });
 
-var SourceCodeForm = React.createClass({
+export default React.createClass({
     getInitialState() {
         return {
             code: ''
@@ -59,5 +59,3 @@ var SourceCodeForm = React.createClass({
         );
     }
 });
-
-export default SourceCodeForm;
